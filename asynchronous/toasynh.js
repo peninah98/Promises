@@ -1,3 +1,5 @@
+const container = document.querySelector(".container");
+
 const getTodos = (resource,callback) => {
   const request = new XMLHttpRequest();
 
@@ -15,18 +17,23 @@ const getTodos = (resource,callback) => {
   request.send();
 };
 
-console.log(1)
-console.log(2)
 
 
-getTodos('../todos.json',(err, data) => {
-  console.log("Callback is  fired!");
-  if (err) {
-    console.log(err);
-  } else {
+
+getTodos('../run.json',(err, data) => {
+  console.log(data);
+  getTodos('../todos.json',(err,data)=>{
     console.log(data);
-  }
+    getTodos('../brake.json',(err,data) =>{
+      console.log(data)
+    })
+  })
+  container.textContent = data
+
 });
 
-console.log(3);
-console.log(4);
+
+
+
+
+

@@ -22,32 +22,15 @@ const getTodos = (resource) => {
 };
 
 getTodos('../todos.json').then(data=>{
-    console.log('Resolved',data[1]);
+    console.log(' Promise 1 Resolved',data);
+   return getTodos('../run.json')
 
+}).then((data)=>{
+    console.log("Promise 2 resolved",data)
+    return getTodos('../brake.json')
+}).then((data)=>{
+    console.log("Promise 3 resolveeeed", data[3])
 }).catch((err)=>{
     console.log("Error",err)
 })
 
-// promies example
-
-// const getsomething = () =>{
-//     return new Promise((resolve,reject)=>{
-//         //fetch somedata
-//         resolve('some data')
-//         reject("Some error") 
-//     })
-// }
-
-
-// getsomething().then((data) =>{
-//     console.log(`Data is ${JSON.stringify(data)}`)
-// },(err)=>{
-//     console.log(`Error hapened ${err}`)
-// })
-
-
-// getsomething().then(data=>{
-//     console.log(data)
-// }).catch(err =>{
-//     console.log(err)
-// })

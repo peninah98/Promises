@@ -1,10 +1,13 @@
 const header = document.querySelector("#fetchingheader");
-header.style.align = 'center'
+
 header.style.color = 'red'
 
 fetch('../todos.json').then((response)=>{
     console.log("Resolved", response)
+    return response.json()
 
+}).then((data)=>{
+    console.log(data)
 }).catch((err)=>{
     console.log("Error", err)
 
